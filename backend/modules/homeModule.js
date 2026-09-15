@@ -33,7 +33,7 @@ const Home = class {
             this.houseId,
           ]
         );
-        return result.insertId;
+        return this.houseId;
       }
 
       const [result] = await db.execute(
