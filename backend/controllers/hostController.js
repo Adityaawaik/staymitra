@@ -46,6 +46,10 @@ exports.getHomeImage = async (req, res, next) => {
 
     const image = await Home.getImageById(imageId);
 
+    if (!image) {
+      return res.status(404).send("Image not found");
+    }
+
     res.set("Content-Type", image.houseImageType);
     res.send(image.houseImage);
   } catch (error) {
@@ -66,6 +70,7 @@ exports.getHostEditHome = async (req, res, next) => {
 
 exports.postHostEditHome = async (req, res, next) => {
   try {
+    const userId = req.session.user.userId;
     const { houseName, houseArea, houseRent, houseOwner, houseId } = req.body;
 
     const newHome = new Home(
@@ -73,7 +78,8 @@ exports.postHostEditHome = async (req, res, next) => {
       houseArea,
       houseRent,
       houseOwner,
-      houseId
+      houseId,
+      userId
     );
 
     await newHome.saveHome();
