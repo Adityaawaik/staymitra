@@ -10,6 +10,7 @@ const HomeDetail = () => {
   const { userHomeDetail, houseDetail } = useContext(UserContext);
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     userHomeDetail(Number(houseId));
@@ -45,7 +46,7 @@ const HomeDetail = () => {
             {home.images.length > 0 ? (
               <>
                 <img
-                  src={`http://localhost:3000/host/home-image/${home.images[currentImageIndex].imageId}`}
+                  src={`${API_URL}/host/home-image/${home.images[currentImageIndex].imageId}`}
                   alt={home.houseName}
                   className="w-full h-full object-cover"
                 />
