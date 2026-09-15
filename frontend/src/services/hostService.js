@@ -63,6 +63,7 @@ export const updateHostHomeToServer = async (
   const response = await fetch(`${API_URL}/host/edit-home`, {
     method: "POST",
     body: formData,
+    credentials: "include",
   });
   return response.json();
 };
