@@ -5,6 +5,7 @@ import UserContext from "../../store/user/UserContext";
 
 const FavHomes = () => {
   const { favHomes, removeUserFavHome } = useContext(UserContext);
+  const API_URL = import.meta.env.VITE_API_URL;
 
   return (
     <>
@@ -37,7 +38,7 @@ const FavHomes = () => {
                   <div className="p-2 relative">
                     {home.images.length > 0 ? (
                       <img
-                        src={`http://localhost:3000/host/home-image/${home.images[0].imageId}`}
+                        src={`${API_URL}/host/home-image/${home.images[0].imageId}`}
                         alt={home.houseName}
                         className=" w-full h-52 sm:h-48 lg:h-52 object-cover rounded-lg
                         "
