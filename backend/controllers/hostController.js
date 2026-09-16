@@ -19,9 +19,10 @@ exports.postHostAddHome = async (req, res, next) => {
 
     const houseImages = req.files || [];
 
-    for (const image of houseImages) {
-      await Home.saveImages(image, houseId);
-    }
+    await Promise.all(
+      houseImages.map((image) => Home.saveImages(image, houseId))
+    );
+
     res.status(201).json({
       message: "House added successfully",
       houseId,
@@ -87,9 +88,9 @@ exports.postHostEditHome = async (req, res, next) => {
     if (req.files && req.files.length > 0) {
       await Home.deleteImages(houseId);
 
-      for (const image of req.files) {
-        await Home.saveImages(image, houseId);
-      }
+      await Promise.all(
+        req.files.map((image) => Home.saveImages(image, houseId))
+      );
     }
 
     res.status(201).json({
