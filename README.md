@@ -11,6 +11,8 @@ Guests can discover available homes, view property information, and maintain a l
 
 The project demonstrates the development of a complete web application with frontend and backend integration, authentication, session management, CRUD operations, database interaction, and deployment.
 
+Database used is MySQL
+
 ## ✨ Features
 👤Guest Features
   <ul>
@@ -73,7 +75,37 @@ The project demonstrates the development of a complete web application with fron
   npm run dev
   ```
   
-  
+  ## Environment Variables
+
+Create `.env` files using the provided `.env.example` files.
+
+### Backend
+
+Create `backend/.env`:
+
+```env
+DB_HOST=your_database_host
+DB_USER=your_database_user
+DB_PASSWORD=your_database_password
+DB_SCHEMA=your_database_schema
+DB_PORT=your_database_port
+SESSION_SECRECT=your_session_secret
+FRONTEND_URL=http://localhost:5173
+NODE_ENV=development
+```
+
+### Frontend
+
+Create `frontend/.env`:
+
+```env
+VITE_API_URL=http://localhost:3000
+```
+
+For production, replace `VITE_API_URL` with your deployed backend URL.
+
+> **Note:** `.env` files are not committed to GitHub. Only `.env.example` files are included as templates. Never expose database credentials or session secrets.
+
  
 
 
