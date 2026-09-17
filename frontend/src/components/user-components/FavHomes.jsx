@@ -24,7 +24,7 @@ const FavHomes = () => {
                 key={home.houseId}
                 className="
                   m-4
-                  w-full
+                  w-[90%]
                   rounded-xl
                   overflow-hidden
                   shadow-[0px_-1px_9px_-3px_white]
